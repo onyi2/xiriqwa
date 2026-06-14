@@ -1,0 +1,6 @@
+{
+  "name": "SIRIKWA",
+  "description": "A browser-based communication platform for instant connections.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
