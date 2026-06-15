@@ -1,1 +1,99 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Permanent+Marker&display=swap');
+
+@theme {
+  --animate-dance: dance 2s ease-in-out infinite;
+
+  @keyframes dance {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(-8deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(8deg); }
+  }
+}
+
+/* QR Reader Overrides */
+#qr-reader {
+  border: none !important;
+  background: transparent !important;
+}
+
+#qr-reader__dashboard_section_csr span {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-family: inherit !important;
+}
+
+#qr-reader a {
+  color: white !important;
+  text-decoration: none !important;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s;
+}
+
+#qr-reader a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+#qr-reader button {
+  background: white !important;
+  color: #be123c !important; /* rose-700 */
+  border: none !important;
+  padding: 8px 20px !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  margin: 8px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.2s !important;
+}
+
+#qr-reader button:hover {
+  background: #fff1f2 !important; /* rose-50 */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+#qr-reader select {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  margin: 8px 0 !important;
+  font-size: 0.85rem !important;
+  outline: none !important;
+  backdrop-filter: blur(4px);
+}
+
+#qr-reader select option {
+  color: #333 !important;
+}
+
+#qr-reader img {
+  opacity: 0.8;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+  margin: 0 auto;
+}
+
+#qr-reader__header_message {
+  color: #fda4af !important; /* rose-300 */
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+}
+
+#qr-reader__status_span {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border: none !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+}
