@@ -3,13 +3,70 @@ import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 
 interface LobbyProps {
+  key?: string;
   roomName: string;
   participantCount: number;
   onEnter: () => void;
+  interactionSoundsEnabled: boolean;
+  volume: number;
 }
 
-export function Lobby({ roomName, participantCount, onEnter }: LobbyProps) {
+export function Lobby({ roomName, participantCount: initialCount, onEnter, interactionSoundsEnabled, volume }: LobbyProps) {
   const [quality, setQuality] = useState<'Excellent' | 'Good' | 'Fair'>('Excellent');
+  const [participantCount, setParticipantCount] = useState(initialCount);
+
+  useEffect(() => {
+    const playInteractionSound = (type: 'join' | 'leave') => {
+      if (!interactionSoundsEnabled || volume === 0) return;
+      try {
+        const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        if (type === 'join') {
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // A4
+          oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1); // A5
+          gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+          gainNode.gain.linearRampToValueAtTime(1 * volume, audioCtx.currentTime + 0.05);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+          oscillator.start(audioCtx.currentTime);
+          oscillator.stop(audioCtx.currentTime + 0.3);
+        } else {
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(330, audioCtx.currentTime + 0.1); // E4
+          gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+          gainNode.gain.linearRampToValueAtTime(1 * volume, audioCtx.currentTime + 0.05);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+          oscillator.start(audioCtx.currentTime);
+          oscillator.stop(audioCtx.currentTime + 0.3);
+        }
+      } catch (e) {
+        // Audio context may require user interaction first
+      }
+    };
+
+    // Simulate join/leave
+    const interactionInterval = setInterval(() => {
+      if (Math.random() > 0.6) {
+        const isJoining = Math.random() > 0.4; // Slightly more likely to join than leave
+        setParticipantCount(prev => {
+           let next = isJoining ? prev + 1 : prev - 1;
+           if (next < 1) next = 1;
+           if (next !== prev) {
+             playInteractionSound(next > prev ? 'join' : 'leave');
+           }
+           return next;
+        });
+      }
+    }, 5000);
+
+    return () => clearInterval(interactionInterval);
+  }, [interactionSoundsEnabled, volume]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,12 +115,15 @@ export function Lobby({ roomName, participantCount, onEnter }: LobbyProps) {
       <h2 className="text-2xl font-bold mb-2 tracking-tight text-white">{roomName}</h2>
       <p className="text-rose-100 mb-8 font-medium">{participantCount} participants currently active</p>
       
-      <button
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
         onClick={onEnter}
         className="w-full text-sm font-semibold text-rose-900 bg-white px-5 py-4 rounded-full hover:bg-rose-50 transition shadow-lg shadow-white/20"
       >
         Enter Lobby
-      </button>
+      </motion.button>
     </motion.div>
   );
 }

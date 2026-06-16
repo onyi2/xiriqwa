@@ -1,0 +1,68 @@
+export type Language = 'en' | 'es' | 'fr' | 'de';
+
+export const translations: Record<Language, Record<string, string>> = {
+  en: {
+    connect: "Connect and collaborate.",
+    subtitle: "Secure, private, and instant connectivity for your community. Join a space to get started.",
+    joinSpace: "Join a space",
+    enterCode: "Enter your code to connect",
+    recentSpaces: "Recent Spaces",
+    searchSpaces: "Search recent by name or tag...",
+    join: "Join",
+    create: "Create",
+    account: "Account",
+    createSpace: "Create Space",
+    signIn: "Sign In",
+    noMatching: "No matching spaces found.",
+    orCreate: "Or create a new space",
+    clearHistory: "Clear",
+  },
+  es: {
+    connect: "Conectar y colaborar.",
+    subtitle: "Conectividad segura, privada e instantánea para tu comunidad. Únete a un espacio para comenzar.",
+    joinSpace: "Únete a un espacio",
+    enterCode: "Ingresa tu código para conectar",
+    recentSpaces: "Espacios Recientes",
+    searchSpaces: "Buscar recientes por nombre o etiqueta...",
+    join: "Unirse",
+    create: "Crear",
+    account: "Cuenta",
+    createSpace: "Crear Espacio",
+    signIn: "Iniciar sesión",
+    noMatching: "No se encontraron espacios.",
+    orCreate: "O crear un nuevo espacio",
+    clearHistory: "Borrar"
+  },
+  fr: {
+    connect: "Connecter et collaborer.",
+    subtitle: "Connectivité sécurisée, privée et instantanée pour votre communauté. Rejoignez un espace pour commencer.",
+    joinSpace: "Rejoindre un espace",
+    enterCode: "Entrez votre code pour vous connecter",
+    recentSpaces: "Espaces Récents",
+    searchSpaces: "Rechercher par nom ou tag...",
+    join: "Rejoindre",
+    create: "Créer",
+    account: "Compte",
+    createSpace: "Créer un espace",
+    signIn: "Se connecter",
+    noMatching: "Aucun espace trouvé.",
+    orCreate: "Ou créer un nouvel espace",
+    clearHistory: "Effacer"
+  },
+  de: {
+    connect: "Verbinden und zusammenarbeiten.",
+    subtitle: "Sichere, private und sofortige Konnektivität für Ihre Community. Treten Sie einem Raum bei.",
+    joinSpace: "Einem Raum beitreten",
+    enterCode: "Geben Sie Ihren Code ein",
+    recentSpaces: "Letzte Räume",
+    searchSpaces: "Suchen nach Name oder Tag...",
+    join: "Beitreten",
+    create: "Erstellen",
+    account: "Konto",
+    createSpace: "Raum erstellen",
+    signIn: "Anmelden",
+    noMatching: "Keine übereinstimmenden Räume gefunden.",
+    orCreate: "Oder einen neuen Raum erstellen",
+    clearHistory: "Löschen"
+  }
+};
