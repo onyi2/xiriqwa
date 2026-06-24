@@ -1,8 +1,9 @@
 {
-  "projectId": "steam-arch-z67s8",
-  "appId": "1:143262908404:web:783c6bcbf1ebd30e6f03a1",
-  "apiKey": "AIzaSyBNKZNXO8adv18NaWV_mOZo9scOj1nfPBM",
-  "authDomain": "steam-arch-z67s8.firebaseapp.com",
-  "storageBucket": "steam-arch-z67s8.firebasestorage.app",
-  "messagingSenderId": "143262908404"
+  "projectId": "selector-3a5f7",
+  "appId": "1:971442650783:web:d6062c3c7f4afd4fb86caa",
+  "apiKey": "AIzaSyDRs6RUO1fmRx7XxmhaY1TQ9EEarLgEaEU",
+  "authDomain": "selector-3a5f7.firebaseapp.com",
+  "storageBucket": "selector-3a5f7.firebasestorage.app",
+  "messagingSenderId": "971442650783",
+  "measurementId": "G-QWHE6W7VRV"
 }
